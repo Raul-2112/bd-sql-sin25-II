@@ -23,7 +23,7 @@ def parse_arguments():
     
     parser.add_argument('--host', default='localhost', 
                         help='PostgreSQL host (default: localhost)')
-    parser.add_argument('--port', default=5433, type=int,
+    parser.add_argument('--port', default=5432, type=int,
                         help='PostgreSQL port (default: 5433)')
     parser.add_argument('--user', required=True,
                         help='PostgreSQL username')
@@ -50,7 +50,7 @@ def connect_postgres(host, port, user, password, dbname=None, autocommit=False):
             user=user,
             password=password,
             dbname=dbname if dbname else "postgres",
-            client_encoding='utf8'
+            client_encoding="utf8"
         )
         conn.autocommit = autocommit
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
